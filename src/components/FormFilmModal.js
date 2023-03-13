@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import { Modal, Header, Form, Button } from "semantic-ui-react";
-import { addFilm, editFilm } from "../actions";
+import { addFilm, editFilm } from "../slices/filmSlice";
 import { formProperties } from "../helpers/formProperties";
+import { v4 as uuidv4 } from 'uuid';
 
 const FormFilmModal = ({
   Title,
@@ -38,7 +39,8 @@ const FormFilmModal = ({
     const isFormValid = _.isEmpty(errorsObject);
     if (isFormValid) {
       if (!imdbID) {
-        dispatch(addFilm(formValues));
+        dispatch(addFilm({ ...formValues, imdbID: uuidv4() }));
+        setState({ Poster });
       } else {
         dispatch(editFilm(formValues));
       }
@@ -47,7 +49,7 @@ const FormFilmModal = ({
     setErrors(validate(formValues));
   };
 
-  const films = useSelector((state) => state.films);
+  const films = useSelector((state) => state.films.value);
 
   const isDateValid = (val) => {
     const date = Date.parse(val);

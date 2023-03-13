@@ -11,7 +11,7 @@ const DEFAULT_FILM_POSTER =
 
 const FilmList = () => {
   const [showNewFilmModal, setShowNewFilmModal] = useState(false);
-  const films = useSelector((state) => state.films);
+  const films = useSelector((state) => state.films.value);
 
   return (
     <>
@@ -21,20 +21,12 @@ const FilmList = () => {
             Poster,
             Title,
             imdbID,
-            Year,
-            Director,
-            Genre,
-            Runtime,
           } = film;
           return (
             <FilmCard
               key={imdbID}
               Poster={Poster}
               Title={_.startCase(_.toLower(removeSpecialChars(Title)))}
-              Year={Year}
-              Director={Director}
-              Runtime={Runtime}
-              Genre={Genre}
               imdbID={imdbID}
             />
           );

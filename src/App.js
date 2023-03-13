@@ -6,16 +6,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Film from "./components/Film";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import { fetchFilms } from "./actions";
+import { fetchFilms } from "./slices/filmSlice";
 
 const App = () => {
-  
   const dispatch = useDispatch();
   const { darkMode } = useSelector((state) => state.theme);
-
+  
   useEffect(() => {
-    dispatch(fetchFilms());
-  }, []);
+    dispatch(fetchFilms())
+  }, [dispatch]);
 
   return (
     <div className={darkMode ? "App inverse" : "App"}>

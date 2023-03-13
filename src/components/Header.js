@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Menu, Icon } from "semantic-ui-react";
-import { TOGGLE_DARK_MODE } from "../constants";
+import { toggleDarkMode } from "../slices/themeSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Header = () => {
       <Menu.Item title="Dark/Light Mode">
         <Icon
           name={darkMode ? "sun" : "moon"}
-          onClick={() => dispatch({ type: TOGGLE_DARK_MODE })}
+          onClick={() => dispatch(toggleDarkMode())}
         />
       </Menu.Item>
     </Menu>

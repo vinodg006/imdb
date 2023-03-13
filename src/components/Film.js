@@ -3,14 +3,14 @@ import { useDispatch, useSelector  } from "react-redux";
 import { Card, Button, Image } from "semantic-ui-react";
 import RemoveFilmModal from "./RemoveFilmModal";
 import FormFilmModal from "./FormFilmModal";
-import { removeFilm } from "../actions/index";
+import { removeFilm } from "../slices/filmSlice";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Film = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
-  const data = useSelector(state => state.films[id]);
+  const data = useSelector(state => state.films.value[id]);
   const {
     Poster,
     Title,

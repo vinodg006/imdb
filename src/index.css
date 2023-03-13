@@ -41,7 +41,12 @@ body {
   background: #1b1c1d;
 }
 
+.inverse .header.cardHeader{
+  color: black !important;
+}
+
 .inverse .description,
-.inverse .header {
+.inverse .header,
+.inverse .content {
   color: rgba(255, 255, 255, 0.9) !important;
 }
