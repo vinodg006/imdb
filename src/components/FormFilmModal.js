@@ -40,7 +40,6 @@ const FormFilmModal = ({
       if (!imdbID) {
         dispatch(addFilm(formValues));
       } else {
-        console.log(formValues, 'formValues')
         dispatch(editFilm(formValues));
       }
       setOpen(false);

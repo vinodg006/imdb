@@ -23,8 +23,6 @@ const Film = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
-  console.log(id,data, 'loca')
-
   const deleteFilm = () => {
     dispatch(removeFilm(imdbID));
     setShowDeleteModal(false);
